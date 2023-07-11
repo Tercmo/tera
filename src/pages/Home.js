@@ -6,12 +6,11 @@ import { useEffect, useState } from 'react';
 const Home = () => {
     const { user, isAuthenticated, isLoading } = useAuth0();
     const key = 'AsQys6MsjhjNVkymKoszaQ==GLZFjEfqtVfSTTkD';
-    const headers = {
-      'X-Api-Key': key
-    }
-    const url ='https://api.api-ninjas.com/v1/celebrity?name='+'Michael Jordan';
+    const headers = {'X-Api-Key': key };
+   const nombre = 'Michael Jordan';
+    const url ='https://api.api-ninjas.com/v1/celebrity?name='+nombre;
     useEffect( ()=>{
-      Axios.get(url)
+      Axios.get(url, {headers})
       .then(resp=>{console.log(resp.data)})
       .catch(error=>{console.log(error)})
     },[]
