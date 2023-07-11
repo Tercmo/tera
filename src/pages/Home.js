@@ -32,8 +32,7 @@ return (
   </div>
   <Fragment>
   {celebrity.map(cel=>{return(
-    <h4> {cel.name} - {cel.birthday} - {cel.deathday} - {cel.place_of_birth} - {cel.biography} - {cel.gender} - {cel.imdb_}
-    </h4>
+    <h4> {cel.name} - {cel.birthday} </h4>
     
     )})}</Fragment>
   </div>
