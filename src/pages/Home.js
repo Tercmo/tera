@@ -28,16 +28,16 @@ return (
   <h3 className='bs-autCard-name'>{user.name} </h3>
   <p className='bs-autCard-email'> Correo Electronico: {user.email}</p> 
   <div>
-
-  </div>
-  <Fragment>
+ 
   {celebrity.map(cel=>{return(
-    <h4> {cel.name} - {cel.birthday} </h4>
-    
-    )})}</Fragment>
+  <Fragment>
+  <h2> {cel.name}  </h2>
+    <h4> {cel.birthday}</h4> 
+    <h4>{cel.age}</h4>
+    </Fragment>
+    )})}
+  </div>
   </div>
 )
-
 }
-
 export default Home
