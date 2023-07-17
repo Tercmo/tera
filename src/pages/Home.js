@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React from 'react'
 import Axios from 'axios'
 import { useEffect, useState } from 'react';
-import Celebrities_List from '../components/Celebrities_List';
+import CelebritiesList from '../components/CelebritiesList';
 
 
 const Home = () => {
@@ -16,15 +16,11 @@ const Home = () => {
  
   const url = process.env.REACT_APP_URL_APP;
   useEffect(() => {
-    
     Axios.get(url, { headers })
       .then(resp => {
-        console.log(resp.data);
-       setCelebrity(resp.data);
+        setCelebrity(resp.data);
         
       })
-
-      .catch(error => { console.log(error) })
   }, [] )
 
   return (   
@@ -34,7 +30,7 @@ const Home = () => {
   <h3>{user.name} </h3>
   <p> Correo Electronico: {user.email}</p> 
   
-  <Celebrities_List celebrities={celebrity}/>
+  <CelebritiesList celebrities={celebrity}/>
   
   </div>
   

@@ -1,6 +1,6 @@
 import  Axios  from 'axios';
 import React, { Fragment, useState } from 'react'
-import Celebrities_List from './Celebrities_List';
+import CelebritiesList from './CelebritiesList';
 import Home from '../pages/Home'
 
 const SearchBar = () => {
@@ -21,7 +21,7 @@ function handleChange(e){
     .then(res=>{
        setCelData(res.data);
     })
-    .catch(err => {console.log(err)});
+    
  }   
  return (
     <Fragment>
@@ -33,7 +33,7 @@ function handleChange(e){
             </div>
            
         </nav>
-        {celData ?( <Celebrities_List celebrities={celData}/>): (<Home/>)}
+        {celData ?( <CelebritiesList celebrities={celData}/>): (<Home/>)}
         
     </div>
 </Fragment>
