@@ -3,7 +3,7 @@ import {useSelector } from 'react-redux'
 
 export const Favorites = () => {
 
-    const { celebrities_List } = useSelector(state => state.cel);
+    const { celebritiesList } = useSelector(state => state.cel);
     return (
         <Fragment>
             <div>Listado de Favoritos</div>
@@ -17,7 +17,7 @@ export const Favorites = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {celebrities_List.map(c => {
+                    {celebritiesList.map(c => {
                         return (
                             <tr>
                                 <td scope='row'>{c.birthday}</td>

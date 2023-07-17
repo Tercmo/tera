@@ -3,21 +3,20 @@ import { useDispatch, useSelector } from 'react-redux'
 import { removeCel, setCel } from '../slices/celSlices';
 
 
-const Celebrities_List = ({ celebrities }) => {
+const CelebritiesList = ({ celebrities }) => {
     const dispatch = useDispatch();
-    const {celebrities_List} = useSelector (state => state.cel)
+    const {celebritiesList} = useSelector (state => state.cel)
 function handleAdd (celid){
     const celebrity = celebrities.find(c => c.birthday === celid);
-   if (celebrities_List.find(c => c.birthday === celid)){
+   if (celebritiesList.find(c => c.birthday === celid)){
     dispatch(removeCel(celid));
    } else {
        dispatch(setCel(celebrity));
    } 
-   console.log(celebrity);
 }
     return (
         <div>
-            <div>Celebrities_List</div>
+            <div>CelebritiesList</div>
             <div> {celebrities.map(c => {
                 return (
                     <div>
@@ -34,4 +33,4 @@ function handleAdd (celid){
 
 
 
-export default Celebrities_List
+export default CelebritiesList

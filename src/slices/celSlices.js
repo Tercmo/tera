@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const celSlice = createSlice({
     name: "cel",
-    initialState: {celebrities_List:[]},
+    initialState: {celebritiesList:[]},
     reducers: {
         setCel: (state, action) => {
-            state.celebrities_List = [... state.celebrities_List,action.payload];
+            state.celebritiesList = [...state.celebritiesList,action.payload];
         }, 
         removeCel: (state, action) => {
             const celId = action.payload;
-            state.celebrities_List = state.celebrities_List.filter(cel => cel.id !== celId);
+            state.celebritiesList = state.celebritiesList.filter(cel => cel.id !== celId);
 
         
         }
