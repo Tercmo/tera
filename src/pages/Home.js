@@ -29,10 +29,10 @@ const Home = () => {
 
   return (   
 
-  <div className='bs-autCard'>
-  <img src={user.picture} className='bs-autCard-image' alt={user.name}  />
-  <h3 className='bs-autCard-name'>{user.name} </h3>
-  <p className='bs-autCard-email'> Correo Electronico: {user.email}</p> 
+  <div>
+  <img className='profile-img' src={user.picture} alt={user.name}  />
+  <h3>{user.name} </h3>
+  <p> Correo Electronico: {user.email}</p> 
   
   <Celebrities_List celebrities={celebrity}/>
   
