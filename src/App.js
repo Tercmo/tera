@@ -3,7 +3,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { Link, Route, Routes, Navigate } from 'react-router-dom';
 import { Favorites } from './pages/Favorites';
 import SearchBar from './components/SearchBar';
-import { Login } from './auth/Login';
+import { Login } from './auth/Login'; // Agregamos la importación del componente Login
 import { Logout } from './auth/Logout';
 import './css/general.css';
 
@@ -15,7 +15,6 @@ function App() {
     setIsDarkMode((prevMode) => !prevMode);
   };
 
-
   document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
 
   return (
@@ -24,11 +23,7 @@ function App() {
         <nav>
           <Link to='/home'>Portada</Link>
           {isAuthenticated && <Link to='/favorites'>Favoritos</Link>}
-          {isAuthenticated ? (
-            <Link to='/logout'>Cerrar Sesión</Link>
-          ) : (
-            <Login />
-          )}
+          {isAuthenticated ? <Logout /> : <Login />} {/* Agregamos esta línea */}
           <button
             className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
             onClick={toggleDarkMode}
@@ -49,8 +44,8 @@ function App() {
             element={isAuthenticated ? <SearchBar /> : <Navigate to='/login' />}
           />
           <Route
-            path='/logout'
-            element={isAuthenticated ? <Logout /> : <Navigate to='/login' />}
+            path='/login' // Agregamos esta ruta para que se muestre el componente Login
+            element={<Login />}
           />
         </Routes>
       </main>
