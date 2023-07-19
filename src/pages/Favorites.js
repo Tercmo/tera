@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react'
 import {useSelector } from 'react-redux'
+import '../css/general.css'; 
+import 'bootstrap/dist/css/bootstrap.css';
 
 export const Favorites = () => {
 
