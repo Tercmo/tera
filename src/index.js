@@ -6,17 +6,18 @@ import { Provider } from 'react-redux';
 import store from './store/store';
 import conf_auth from './conf_auth';
 import { BrowserRouter } from 'react-router-dom';
+import './css/general.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-   <Provider store={store}>
-    <Auth0Provider {...conf_auth}>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
-    </Auth0Provider>
+    <Provider store={store}>
+      <Auth0Provider {...conf_auth}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </Auth0Provider>
     </Provider>
   </React.StrictMode>
 );

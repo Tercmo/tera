@@ -1,0 +1,24 @@
+/* modo oscuro 1 revisar por que solo funciona así */
+.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+/* modo claro */
+.light-mode {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+/* General a toda la página*/
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8; /* Estilo de fondo predeterminado */
+}
+
+/* modo oscuro */
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
