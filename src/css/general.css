@@ -1,44 +1,38 @@
-/* modo oscuro 1 revisar por que solo funciona así */
-.dark-mode {
-  background-color: #333;
-  color: #fff;
-}
-
-/* modo claro */
-.light-mode {
-  background-color: #f8f8f8;
-  color: #333;
-}
-
-/* General a toda la página */
-body {
-  margin: 8px; /* Agregamos un margen mínimo en todos los lados del cuerpo del documento */
-  padding: 0;
-  background-color: #f8f8f8; /* Estilo de fondo predeterminado */
-}
-
-/* modo oscuro */
 body.dark-mode {
   background-color: #333;
   color: #fff;
 }
 
-/* Contenedor principal del contenido */
-.App {
-  margin: 16px; /* Agregamos un margen mínimo al contenedor principal */
+body.light-mode {
+  background-color: #f8f8f8;
+  color: #333;
 }
 
-/* Barra de navegación */
-nav {
-  margin-bottom: 16px; /* Agregamos un margen inferior a la barra de navegación */
+.search-bar-container {
+  padding: 20px;
 }
 
-/* Barra lateral (si existe) */
-.sidebar {
-  margin-right: 16px; /* Agregamos un margen derecho a la barra lateral */
+.search-bar-container.authenticated {
+  background-color: #f8f8f8;
+  border: 1px solid #333;
+  color: #333;
 }
 
-/* Contenido principal */
-main {
-  margin-right: 16px; /* Agregamos un margen derecho al contenido principal */
+.search-bar-container.unauthenticated {
+  background-color: #333;
+  border: 1px solid #f8f8f8;
+  color: #fff;
+}
+
+/* Agregamos los márgenes horizontal (izquierdo y derecho) */
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+img {
+  max-width: 100%;
+  height: auto;
 }

@@ -1,27 +1,68 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link, Route, Routes, Navigate } from 'react-router-dom';
 import { Favorites } from './pages/Favorites';
 import SearchBar from './components/SearchBar';
-import { Login } from './auth/Login'; // Agregamos la importación del componente Login
+import { Login } from './auth/Login';
 import { Logout } from './auth/Logout';
 import './css/general.css';
+import logoImage from './images/Tera.png'; 
 
 function App() {
-  const { isAuthenticated } = useAuth0();
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { isAuthenticated, user } = useAuth0();
+  const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('isDarkMode') === 'true');
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    localStorage.setItem('isDarkMode', isDarkMode);
+    document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+  }, [isDarkMode]);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevMode) => !prevMode);
+    setIsDarkMode(prevMode => !prevMode);
   };
 
-  document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+  const renderUserInfo = () => (
+    <div className="ml-lg-auto d-flex align-items-center user-actions">
+      <div className="user-info d-flex align-items-center">
+        <img
+          className="profile-img rounded-circle"
+          src={user?.picture}
+          alt={user?.name}
+          style={{ width: '40px', height: '40px', marginRight: '8px' }}
+        />
+        <div style={{ lineHeight: '6%' }}>
+          <h5 className="text-dark">{user?.name}</h5>
+          <p className="text-dark">{user?.email}</p>
+        </div>
+      </div>
+    </div>
+  );
+
+  const renderMenuLinks = () => (
+    <>
+      <Link to="/home" className="nav-link active" aria-current="page">
+        Inicio
+      </Link>
+      <Link to="/favorites" className="nav-link">
+        Favoritos
+      </Link>
+    </>
+  );
 
   return (
-    <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <Link to='/home' className="navbar-brand">Navbar</Link>
+    <div className={`App ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+      <nav className={`navbar navbar-expand-lg navbar-light bg-light ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
+        <div className="container">
+          <Link to="" className="navbar-brand">
+            <img
+              src={logoImage}
+              alt="Logo de Proyecto Tera"
+              style={{ width: '38px', height: '38px', marginRight: '8px' }}
+            />
+            Proyecto Tera
+          </Link>
+
           <button
             className="navbar-toggler"
             type="button"
@@ -33,41 +74,58 @@ function App() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <Link to='/home' className="nav-link active" aria-current="page">Inicio</Link>
-              {isAuthenticated && <Link to='/favorites' className="nav-link">Favoritos</Link>}
-              <a className="nav-link disabled">Deshabilitado</a>
+              {isAuthenticated && renderMenuLinks()}
             </div>
+            {isAuthenticated ? renderUserInfo() : null}
           </div>
-          {isAuthenticated ? <Logout /> : <Login />}
-          <button
-            className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
-            onClick={toggleDarkMode}
-          >
-            {isDarkMode ? 'Modo Oscuro' : 'Modo Claro'}
-          </button>
+          {isAuthenticated && (
+            <button className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`} onClick={toggleDarkMode}>
+              {isDarkMode ? 'Modo Oscuro' : 'Modo Claro'}
+            </button>
+          )}
         </div>
+        {isAuthenticated && <Logout />}
       </nav>
 
       <main>
+        {!isAuthenticated && (
+          <div className="d-flex align-items-center justify-content-center flex-column" style={{ height: '80vh' }}>
+            <div className="text-center">
+              <h3>Define quienes son tus</h3>
+              <h1>¡ Celebridades Favoritas !</h1>
+              <h5>Como nunca antes se había hecho</h5>
+            </div>
+            <Login />
+          </div>
+        )}
+
         <Routes>
+          <Route path="/favorites" element={isAuthenticated ? <Favorites /> : <Navigate to="/login" />} />
           <Route
-            path='/favorites'
-            element={isAuthenticated ? <Favorites /> : <Navigate to='/login' />}
+            path="/home"
+            element={isAuthenticated ? <SearchBar favorites={favorites} setFavorites={setFavorites} /> : <Navigate to="/login" />}
           />
-          <Route
-            path='/home'
-            element={isAuthenticated ? <SearchBar /> : <Navigate to='/login' />}
-          />
-          <Route
-            path='/login' // Agregamos esta ruta para que se muestre el componente Login
-            element={<Login />}
-          />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
 
-      <footer>{/* si alcanzo a hacer el pie de página */}</footer>
+      <footer className="text-center mt-4">
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <p>
+                2023 | Elaborado por: <a href="https://github.com/Tercmo">Tercmo</a>
+              </p>
+              <a href="https://github.com/Tercmo/tera" className="btn btn-primary">
+                Accede al código
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
