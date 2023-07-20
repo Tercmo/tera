@@ -8,6 +8,9 @@ import conf_auth from './conf_auth';
 import { BrowserRouter } from 'react-router-dom';
 import './css/general.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
+
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
