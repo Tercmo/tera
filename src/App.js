@@ -48,25 +48,25 @@ function App() {
                   Favoritos
                 </Link>
               )}
-              {isAuthenticated ? (
-                <div className="ml-lg-auto d-flex align-items-center"> {/* User info on navbar for large devices */}
-                  <img
-                    className="profile-img rounded-circle"
-                    src={user?.picture}
-                    alt={user?.name}
-                    style={{ width: '40px', height: '40px', marginRight: '8px' }}
-                  />
-                  <div style={{ lineHeight: '6%' }}>
-                    <h5 className="text-dark">{user?.name}</h5>
-                    <p className="text-dark">{user?.email}</p>
-                  </div>
-                  <Logout />
-                </div>
-              ) : (
-                <Login />
-              )}
             </div>
+            {isAuthenticated ? (
+              <div className="ml-lg-auto d-flex align-items-center"> {/* User info on navbar for large devices */}
+                <img
+                  className="profile-img rounded-circle"
+                  src={user?.picture}
+                  alt={user?.name}
+                  style={{ width: '40px', height: '40px', marginRight: '8px' }}
+                />
+                <div style={{ lineHeight: '6%' }}>
+                  <h5 className="text-dark">{user?.name}</h5>
+                  <p className="text-dark">{user?.email}</p>
+                </div>
+              </div>
+            ) : (
+              <Login />
+            )}
           </div>
+          {isAuthenticated && <Logout />}
         </div>
         <button
           className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
