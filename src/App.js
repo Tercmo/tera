@@ -1,26 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import { Link, Route, Routes, Navigate } from 'react-router-dom';
 import { Favorites } from './pages/Favorites';
 import SearchBar from './components/SearchBar';
-import { Login } from './auth/Login'; // Agregamos la importación del componente Login
+import { Login } from './auth/Login';
 import { Logout } from './auth/Logout';
 import './css/general.css';
 
 function App() {
   const { isAuthenticated } = useAuth0();
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('isDarkMode') === 'true');
+
+  useEffect(() => {
+    localStorage.setItem('isDarkMode', isDarkMode);
+    document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
+  }, [isDarkMode]);
 
   const toggleDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
   };
 
-  document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
-
   return (
     <div className="App">
       <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
-        <Link to='/home' className="navbar-brand">Proyecto Tera</Link>
+        <Link to="/home" className="navbar-brand">
+          Proyecto Tera
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -34,8 +39,10 @@ function App() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link to='/home' className="nav-link active" aria-current="page">Inicio</Link>
-            {isAuthenticated && <Link to='/favorites' className="nav-link">Favoritos</Link>}
+            <Link to="/home" className="nav-link active" aria-current="page">
+              Inicio
+            </Link>
+            {isAuthenticated && <Link to="/favorites" className="nav-link">Favoritos</Link>}
             <a className="nav-link disabled">Deshabilitado</a>
           </div>
         </div>
@@ -51,17 +58,14 @@ function App() {
       <main>
         <Routes>
           <Route
-            path='/favorites'
-            element={isAuthenticated ? <Favorites /> : <Navigate to='/login' />}
+            path="/favorites"
+            element={isAuthenticated ? <Favorites /> : <Navigate to="/login" />}
           />
           <Route
-            path='/home'
-            element={isAuthenticated ? <SearchBar /> : <Navigate to='/login' />}
+            path="/home"
+            element={isAuthenticated ? <SearchBar /> : <Navigate to="/login" />}
           />
-          <Route
-            path='/login' // Agregamos esta ruta para que se muestre el componente Login
-            element={<Login />}
-          />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
 

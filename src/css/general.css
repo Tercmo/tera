@@ -1,61 +1,31 @@
 /* general.css */
-/* modo oscuro 1 revisar por que solo funciona así */
-.dark-mode {
-  background-color: #333;
-  color: #fff;
-}
-
-/* modo claro */
-.light-mode {
-  background-color: #f8f8f8;
-  color: #333;
-}
-
-/* General a toda la página */
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #f8f8f8; /* Estilo de fondo predeterminado */
-}
-
 /* modo oscuro */
 body.dark-mode {
   background-color: #333;
   color: #fff;
 }
 
-/* Contenedor principal del contenido */
-.App {
-  margin: 0;
+/* modo claro */
+body.light-mode {
+  background-color: #f8f8f8;
+  color: #333;
 }
 
-/* Barra de navegación */
-nav {
-  margin-bottom: 0;
+/* Contenedor de la barra de búsqueda */
+.search-bar-container {
+  padding: 20px;
 }
 
-/* Barra lateral (si existe) */
-.sidebar {
-  margin-right: 16px;
+/* Estilo para la barra de búsqueda cuando el usuario está autenticado */
+.search-bar-container.authenticated {
+  background-color: #f8f8f8;
+  border: 1px solid #333;
+  color: #333;
 }
 
-/* Contenido principal */
-main {
-  margin-right: 16px;
-}
-
-/* Estilo para la barra de navegación */
-nav.navbar {
-  margin: 0;
-  padding: 0;
-}
-
-/* Estilo para los elementos internos de la barra de navegación */
-.navbar-nav {
-  margin: 8px; /* Agregamos un margen mínimo a los elementos internos */
-}
-
-/* Opcionalmente, si deseas que el botón hamburguesa ocupe todo el ancho en dispositivos pequeños */
-.navbar-toggler {
-  margin-right: 0;
+/* Estilo para la barra de búsqueda cuando el usuario no está autenticado */
+.search-bar-container.unauthenticated {
+  background-color: #333;
+  border: 1px solid #f8f8f8;
+  color: #fff;
 }
