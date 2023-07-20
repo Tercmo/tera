@@ -54,7 +54,7 @@ function App() {
     <div className={`App ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
       <nav className={`navbar navbar-expand-lg navbar-light bg-light ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
         <div className="container">
-          <Link to="/home" className="navbar-brand">
+          <Link to="" className="navbar-brand">
             <img
               src={logoImage}
               alt="Logo de Proyecto Tera"
@@ -79,7 +79,7 @@ function App() {
             <div className="navbar-nav">
               {isAuthenticated && renderMenuLinks()}
             </div>
-            {isAuthenticated ? renderUserInfo() : <Login />}
+            {isAuthenticated ? renderUserInfo() : null}
           </div>
           {isAuthenticated && (
             <button className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`} onClick={toggleDarkMode}>
@@ -91,6 +91,17 @@ function App() {
       </nav>
 
       <main>
+        {!isAuthenticated && (
+          <div className="d-flex align-items-center justify-content-center flex-column" style={{ height: '80vh' }}>
+            <div className="text-center">
+              <h3>Define quienes son tus</h3>
+              <h1>¡ Celebridades Favoritas !</h1>
+              <h5>Como nunca antes se había hecho</h5>
+            </div>
+            <Login />
+          </div>
+        )}
+
         <Routes>
           <Route path="/favorites" element={isAuthenticated ? <Favorites /> : <Navigate to="/login" />} />
           <Route
