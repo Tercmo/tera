@@ -10,9 +10,9 @@ export const Favorites = () => {
     <Fragment>
       <div>Listado de Favoritos</div>
       <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 g-2">
-        {celebritiesList.map((c) => (
-          <div className="col" key={c.birthday}>
-            <div className="card">
+        {celebritiesList.map((c, index) => (
+          <div className="col" key={index}>
+            <div className="card h-100">
               <div className="card-body">
                 <h4 className="card-title">{c.name}</h4>
                 <h6 className="card-subtitle mb-2 text-muted">{c.nationality}</h6>

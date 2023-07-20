@@ -22,8 +22,10 @@ const CelebritiesList = ({ celebrities }) => {
           <div className="col" key={index}>
             <div className="card">
               <div className="card-body">
-                <h4 className="card-title">{c.name}</h4>
-                <h2 className="card-subtitle mb-2 text-body-secondary">{c.age}</h2>
+                <h2 className="card-title">{c.name}</h2>
+                <h4 className="card-subtitle mb-2 text-body-secondary">{c.age}</h4>
+                <h4 className="card-subtitle mb-2 text-body-secondary"> {c.gender}</h4>
+                
                 <button
                   type="button"
                   className="btn btn-primary"
