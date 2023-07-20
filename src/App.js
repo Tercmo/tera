@@ -6,7 +6,7 @@ import SearchBar from './components/SearchBar';
 import { Login } from './auth/Login';
 import { Logout } from './auth/Logout';
 import './css/general.css';
-import logoImage from './images/Tera.png'; 
+import logoImage from './images/Tera.png';
 
 function App() {
   const { isAuthenticated, user } = useAuth0();
@@ -110,6 +110,8 @@ function App() {
           />
           <Route path="/login" element={<Login />} />
         </Routes>
+
+        {isAuthenticated && <Navigate to="/home" />}
       </main>
 
       <footer className="text-center mt-4">
