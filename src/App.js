@@ -75,14 +75,18 @@ function App() {
               <Login />
             )}
           </div>
-          {isAuthenticated && <Logout />}
+          {/* Mantener solo un botón de cambiar de modo claro a modo oscuro en la barra de navegación */}
+          {isAuthenticated && (
+            <button
+              className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
+              onClick={toggleDarkMode}
+            >
+              {isDarkMode ? 'Modo Oscuro' : 'Modo Claro'}
+            </button>
+          )}
         </div>
-        <button
-          className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
-          onClick={toggleDarkMode}
-        >
-          {isDarkMode ? 'Modo Oscuro' : 'Modo Claro'}
-        </button>
+        {/* Mantener solo un botón de cerrar sesión en la barra de navegación */}
+        {isAuthenticated && <Logout />}
       </nav>
 
       <main>
@@ -99,6 +103,14 @@ function App() {
         </Routes>
       </main>
 
+      {isAuthenticated && (
+        <div className="container">
+          <div className="row">
+            {/* Columna 3 */}
+            
+          </div>
+        </div>
+      )}
       <footer>{/* si alcanzo a hacer el pie de página */}</footer>
     </div>
   );

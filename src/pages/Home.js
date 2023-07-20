@@ -22,11 +22,7 @@ const Home = () => {
 
   return (
     <div>
-      <img className='profile-img' src={user?.picture} alt={user?.name} />
-      <h3>{user?.name}</h3>
-      <p>Correo Electronico: {user?.email}</p>
-
-      <CelebritiesList celebrities={celebrity} />
+         <CelebritiesList celebrities={celebrity} />
 
     </div>
   );
