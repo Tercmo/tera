@@ -10,9 +10,9 @@
   color: #333;
 }
 
-/* General a toda la página*/
+/* General a toda la página */
 body {
-  margin: 0;
+  margin: 8px; /* Agregamos un margen mínimo en todos los lados del cuerpo del documento */
   padding: 0;
   background-color: #f8f8f8; /* Estilo de fondo predeterminado */
 }
@@ -21,4 +21,24 @@ body {
 body.dark-mode {
   background-color: #333;
   color: #fff;
+}
+
+/* Contenedor principal del contenido */
+.App {
+  margin: 16px; /* Agregamos un margen mínimo al contenedor principal */
+}
+
+/* Barra de navegación */
+nav {
+  margin-bottom: 16px; /* Agregamos un margen inferior a la barra de navegación */
+}
+
+/* Barra lateral (si existe) */
+.sidebar {
+  margin-right: 16px; /* Agregamos un margen derecho a la barra lateral */
+}
+
+/* Contenido principal */
+main {
+  margin-right: 16px; /* Agregamos un margen derecho al contenido principal */
 }
