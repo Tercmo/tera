@@ -1,29 +1,23 @@
-/* general.css */
-/* modo oscuro */
 body.dark-mode {
   background-color: #333;
   color: #fff;
 }
 
-/* modo claro */
 body.light-mode {
   background-color: #f8f8f8;
   color: #333;
 }
 
-/* Contenedor de la barra de búsqueda */
 .search-bar-container {
   padding: 20px;
 }
 
-/* Estilo para la barra de búsqueda cuando el usuario está autenticado */
 .search-bar-container.authenticated {
   background-color: #f8f8f8;
   border: 1px solid #333;
   color: #333;
 }
 
-/* Estilo para la barra de búsqueda cuando el usuario no está autenticado */
 .search-bar-container.unauthenticated {
   background-color: #333;
   border: 1px solid #f8f8f8;
