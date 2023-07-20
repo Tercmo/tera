@@ -22,7 +22,7 @@ const Home = () => {
 
   return (
     <div>
-         <CelebritiesList celebrities={celebrity} />
+      <CelebritiesList celebrities={celebrity} />
 
     </div>
   );

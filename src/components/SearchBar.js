@@ -23,7 +23,7 @@ const SearchBar = () => {
     });
   }
 
-  // Función para manejar el envío del formulario
+
   function handleSubmit(e) {
     e.preventDefault();
     getCelData();

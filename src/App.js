@@ -20,6 +20,8 @@ function App() {
     setIsDarkMode((prevMode) => !prevMode);
   };
 
+  const [favorites, setFavorites] = useState([]);
+
   return (
     <div className="App">
       <nav className={`navbar navbar-expand-lg navbar-light bg-light ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
@@ -29,7 +31,6 @@ function App() {
             Proyecto Tera
           </Link>
 
-          {/* Botón de hamburguesa */}
           <button
             className="navbar-toggler"
             type="button"
@@ -42,7 +43,6 @@ function App() {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          {/* Contenido colapsable para pantallas pequeñas */}
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
               {isAuthenticated && (
@@ -75,7 +75,6 @@ function App() {
               <Login />
             )}
           </div>
-          {/* Mantener solo un botón de cambiar de modo claro a modo oscuro en la barra de navegación */}
           {isAuthenticated && (
             <button
               className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
@@ -85,7 +84,6 @@ function App() {
             </button>
           )}
         </div>
-        {/* Mantener solo un botón de cerrar sesión en la barra de navegación */}
         {isAuthenticated && <Logout />}
       </nav>
 
@@ -97,21 +95,26 @@ function App() {
           />
           <Route
             path="/home"
-            element={isAuthenticated ? <SearchBar /> : <Navigate to="/login" />}
+            element={isAuthenticated ? <SearchBar favorites={favorites} setFavorites={setFavorites} /> : <Navigate to="/login" />}
           />
           <Route path="/login" element={<Login />} />
         </Routes>
       </main>
 
-      {isAuthenticated && (
+      <footer className="text-center mt-4">
         <div className="container">
           <div className="row">
-            {/* Columna 3 */}
-            
+            <div className="col">
+              <p>
+                2023 | Elaborado por: <a href="https://github.com/Tercmo">Tercmo</a>
+              </p>
+              <a href="https://github.com/Tercmo/tera" className="btn btn-primary">
+                Accede al código
+              </a>
+            </div>
           </div>
         </div>
-      )}
-      <footer>{/* si alcanzo a hacer el pie de página */}</footer>
+      </footer>
     </div>
   );
 }
