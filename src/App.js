@@ -8,7 +8,7 @@ import { Logout } from './auth/Logout';
 import './css/general.css';
 
 function App() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('isDarkMode') === 'true');
 
   useEffect(() => {
@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+      <nav className={`navbar navbar-expand-lg navbar-light bg-light ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
         <Link to="/home" className="navbar-brand">
           Proyecto Tera
         </Link>
@@ -45,6 +45,22 @@ function App() {
             {isAuthenticated && <Link to="/favorites" className="nav-link">Favoritos</Link>}
             <a className="nav-link disabled">Deshabilitado</a>
           </div>
+        </div>
+        <div className={`user-info ml-auto d-flex align-items-center`}>
+          {isAuthenticated && (
+            <React.Fragment>
+              <img
+                className='profile-img rounded-circle'
+                src={user?.picture}
+                alt={user?.name}
+                style={{ width: '40px', height: '40px', marginRight: '8px' }} // Ajustar el tamaño de la imagen y el margen aquí
+              />
+              <div className="ml-2" style={{ lineHeight: '6%' }}>
+                <h5 className="text-dark">{user?.name}</h5>
+                <p className="text-dark">{user?.email}</p>
+              </div>
+            </React.Fragment>
+          )}
         </div>
         {isAuthenticated ? <Logout /> : <Login />}
         <button
