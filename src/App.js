@@ -23,10 +23,13 @@ function App() {
   return (
     <div className="App">
       <nav className={`navbar navbar-expand-lg navbar-light bg-light ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-        <div className="container"> {/* Wrap navbar content in a container */}
+        <div className="container">
+          {/* Columna 1 */}
           <Link to="/home" className="navbar-brand">
             Proyecto Tera
           </Link>
+
+          {/* Botón de hamburguesa */}
           <button
             className="navbar-toggler"
             type="button"
@@ -38,28 +41,34 @@ function App() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
+          {/* Contenido colapsable para pantallas pequeñas */}
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav"> {/* Content for all devices */}
-              <Link to="/home" className="nav-link active" aria-current="page">
-                Inicio
-              </Link>
+            <div className="navbar-nav">
               {isAuthenticated && (
-                <Link to="/favorites" className="nav-link">
-                  Favoritos
-                </Link>
+                <>
+                  <Link to="/home" className="nav-link active" aria-current="page">
+                    Inicio
+                  </Link>
+                  <Link to="/favorites" className="nav-link">
+                    Favoritos
+                  </Link>
+                </>
               )}
             </div>
             {isAuthenticated ? (
-              <div className="ml-lg-auto d-flex align-items-center"> {/* User info on navbar for large devices */}
-                <img
-                  className="profile-img rounded-circle"
-                  src={user?.picture}
-                  alt={user?.name}
-                  style={{ width: '40px', height: '40px', marginRight: '8px' }}
-                />
-                <div style={{ lineHeight: '6%' }}>
-                  <h5 className="text-dark">{user?.name}</h5>
-                  <p className="text-dark">{user?.email}</p>
+              <div className="ml-lg-auto d-flex align-items-center user-actions">
+                <div className="user-info d-flex align-items-center">
+                  <img
+                    className="profile-img rounded-circle"
+                    src={user?.picture}
+                    alt={user?.name}
+                    style={{ width: '40px', height: '40px', marginRight: '8px' }}
+                  />
+                  <div style={{ lineHeight: '6%' }}>
+                    <h5 className="text-dark">{user?.name}</h5>
+                    <p className="text-dark">{user?.email}</p>
+                  </div>
                 </div>
               </div>
             ) : (
