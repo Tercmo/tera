@@ -27,7 +27,7 @@ export const Login = () => {
 
   return (
     <button className="btn btn-outline-info" onClick={handleLogin}>
-      Acceder
+      Accederdos
     </button>
   );
 };
