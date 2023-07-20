@@ -9,17 +9,26 @@ import './css/general.css';
 import logoImage from './images/Tera.png';
 
 function App() {
-  const { isAuthenticated, user } = useAuth0();
+  const { isAuthenticated, user, loginWithRedirect } = useAuth0();
   const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('isDarkMode') === 'true');
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     localStorage.setItem('isDarkMode', isDarkMode);
     document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
-  }, [isDarkMode]);
+
+   
+    if (isAuthenticated) {
+      navigateToHome();
+    }
+  }, [isDarkMode, isAuthenticated]);
 
   const toggleDarkMode = () => {
     setIsDarkMode(prevMode => !prevMode);
+  };
+
+  const navigateToHome = () => {
+    window.location.href = '/home';
   };
 
   const renderUserInfo = () => (
@@ -103,15 +112,17 @@ function App() {
         )}
 
         <Routes>
-          <Route path="/favorites" element={isAuthenticated ? <Favorites /> : <Navigate to="/login" />} />
+                    {isAuthenticated ? (
+            <Route path="/favorites" element={<Favorites />} />
+          ) : (
+            <Route path="/favorites" element={<Navigate to="/login" />} />
+          )}
           <Route
             path="/home"
             element={isAuthenticated ? <SearchBar favorites={favorites} setFavorites={setFavorites} /> : <Navigate to="/login" />}
           />
           <Route path="/login" element={<Login />} />
         </Routes>
-
-        {isAuthenticated && <Navigate to="/home" />}
       </main>
 
       <footer className="text-center mt-4">
