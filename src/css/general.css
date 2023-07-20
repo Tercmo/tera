@@ -23,3 +23,16 @@ body.light-mode {
   border: 1px solid #f8f8f8;
   color: #fff;
 }
+
+/* Agregamos los márgenes horizontal (izquierdo y derecho) */
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}

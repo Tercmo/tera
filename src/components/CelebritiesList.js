@@ -1,6 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeCel, setCel } from '../slices/celSlices';
+import '../css/general.css'
+
+
 
 const CelebritiesList = ({ celebrities }) => {
   const dispatch = useDispatch();
@@ -16,7 +19,7 @@ const CelebritiesList = ({ celebrities }) => {
   }
 
   return (
-    <div>
+    <div className="container mt-4 mb-4"> {/* Agregamos las clases container, mt-4 y mb-4 */}
       <div className="row row-cols-lg-4 row-cols-md-3 row-cols-sm-1 g-2">
         {celebrities.map((c, index) => (
           <div className="col" key={index}>
@@ -25,7 +28,6 @@ const CelebritiesList = ({ celebrities }) => {
                 <h2 className="card-title">{c.name}</h2>
                 <h4 className="card-subtitle mb-2 text-body-secondary">{c.age}</h4>
                 <h4 className="card-subtitle mb-2 text-body-secondary">{c.gender}</h4>
-
                 <button
                   type="button"
                   className="btn btn-primary"

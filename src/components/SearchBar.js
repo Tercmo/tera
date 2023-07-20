@@ -23,7 +23,6 @@ const SearchBar = () => {
     });
   }
 
-
   function handleSubmit(e) {
     e.preventDefault();
     getCelData();
@@ -32,12 +31,12 @@ const SearchBar = () => {
   return (
     <Fragment>
       <div className={`search-bar ${isAuthenticated ? 'authenticated' : 'unauthenticated'}`}>
-        <div className="container">
+        <div className="container mt-4 mb-4">
           <div className="row justify-content-center">
             <div className="col-md-6">
               <form
                 className={`d-flex ${isAuthenticated ? 'authenticated' : 'unauthenticated'}`}
-                onSubmit={handleSubmit} // Agregamos el evento onSubmit y apuntamos a la función handleSubmit
+                onSubmit={handleSubmit}
               >
                 <input
                   className="form-control me-2"
@@ -46,7 +45,7 @@ const SearchBar = () => {
                   aria-label="Search"
                   onChange={handleChange}
                 />
-                <button className="btn btn-primary" type="submit"> {/* Cambiamos el tipo de botón a 'submit' */}
+                <button className="btn btn-primary" type="submit">
                   Buscar
                 </button>
               </form>
@@ -54,7 +53,6 @@ const SearchBar = () => {
           </div>
         </div>
       </div>
-
       {celData ? <CelebritiesList celebrities={celData} /> : <Home />}
     </Fragment>
   );
