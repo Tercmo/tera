@@ -6,7 +6,7 @@ import celReducer from "../slices/celSlices";
 export default configureStore({
     reducer: {
         auth: authReducer,
-        cel:  celReducer 
+        cel: celReducer
 
     }
 })

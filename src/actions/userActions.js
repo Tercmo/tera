@@ -1,6 +1,6 @@
 const login = (user) => {
     return {
-        type: 'LOGIN', 
+        type: 'LOGIN',
         payload: user,
 
     }
@@ -8,7 +8,7 @@ const login = (user) => {
 
 const logout = () => {
     return {
-        type: 'LOGOUT', 
+        type: 'LOGOUT',
 
     }
 }

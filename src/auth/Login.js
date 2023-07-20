@@ -15,11 +15,12 @@ export const Login = () => {
     }
 
   };
-useEffect(() => {
-   if (isAuthenticated && user) {
-     dispatch(login(user))};
-   }
-  , [isAuthenticated, user, dispatch]);
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      dispatch(login(user))
+    };
+  }
+    , [isAuthenticated, user, dispatch]);
 
   if (isLoading) {
     return <div>Cargando...</div>;
