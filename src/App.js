@@ -16,19 +16,10 @@ function App() {
   useEffect(() => {
     localStorage.setItem('isDarkMode', isDarkMode);
     document.body.className = isDarkMode ? 'dark-mode' : 'light-mode';
-
-   
-    if (isAuthenticated) {
-      navigateToHome();
-    }
-  }, [isDarkMode, isAuthenticated]);
+  }, [isDarkMode]);
 
   const toggleDarkMode = () => {
     setIsDarkMode(prevMode => !prevMode);
-  };
-
-  const navigateToHome = () => {
-    window.location.href = '/home';
   };
 
   const renderUserInfo = () => (
@@ -107,12 +98,15 @@ function App() {
               <h1>¡ Celebridades Favoritas !</h1>
               <h5>Como nunca antes se había hecho</h5>
             </div>
-            <Login />
+            <button className="btn btn-primary" onClick={loginWithRedirect}>
+              Iniciar sesión
+            </button>
           </div>
         )}
 
         <Routes>
-                    {isAuthenticated ? (
+          {/* Asegurarse de que el usuario esté autenticado antes de acceder a /favorites */}
+          {isAuthenticated ? (
             <Route path="/favorites" element={<Favorites />} />
           ) : (
             <Route path="/favorites" element={<Navigate to="/login" />} />
