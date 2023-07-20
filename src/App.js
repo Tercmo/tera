@@ -6,8 +6,7 @@ import SearchBar from './components/SearchBar';
 import { Login } from './auth/Login';
 import { Logout } from './auth/Logout';
 import './css/general.css';
-
-import logoImage from './images/Tera.png'; // Ruta a tu imagen logo.png
+import logoImage from './images/Tera.png'; 
 
 function App() {
   const { isAuthenticated, user } = useAuth0();
