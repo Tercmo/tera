@@ -1,24 +1,35 @@
+import React, { useState, useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import React from 'react'
+import Axios from 'axios';
+import CelebritiesList from '../components/CelebritiesList';
 
 const Home = () => {
-    const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user } = useAuth0();
+  const [celebrity, setCelebrity] = useState([]);
 
-    if (isLoading) {
-      return <div>Cargando...</div>;
-    }
-  
-    return (
-      isAuthenticated && (
-        <div className='bs-autCard'>
-        <img src={user.picture} className='bs-autCard-image' alt={user.name}  />
-        <h3 className='bs-autCard-name'>{user.name} </h3>
-        <p className='bs-autCard-email'> Correo Electronico: {user.email}</p>
-           </div>
-      )
-    );
+  const key = process.env.REACT_APP_KEY;
+  const headers = {
+    'X-Api-Key': key
+  };
 
+  const url = process.env.REACT_APP_URL_APP;
+  useEffect(() => {
+    Axios.get(url, { headers })
+      .then(resp => {
+        setCelebrity(resp.data);
+      });
+  }, []);
 
-}
+  return (
+    <div>
+      <img className='profile-img' src={user?.picture} alt={user?.name} />
+      <h3>{user?.name}</h3>
+      <p>Correo Electronico: {user?.email}</p>
 
-export default Home
+      <CelebritiesList celebrities={celebrity} />
+
+    </div>
+  );
+};
+
+export default Home;
