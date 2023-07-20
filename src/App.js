@@ -23,47 +23,50 @@ function App() {
   return (
     <div className="App">
       <nav className={`navbar navbar-expand-lg navbar-light bg-light ${isDarkMode ? 'dark-mode' : 'light-mode'}`}>
-        <Link to="/home" className="navbar-brand">
-          Proyecto Tera
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav"> {/* Content for all devices */}
-            <Link to="/home" className="nav-link active" aria-current="page">
-              Inicio
-            </Link>
-            {isAuthenticated && (
-              <Link to="/favorites" className="nav-link">
-                Favoritos
+        <div className="container"> {/* Wrap navbar content in a container */}
+          <Link to="/home" className="navbar-brand">
+            Proyecto Tera
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav"> {/* Content for all devices */}
+              <Link to="/home" className="nav-link active" aria-current="page">
+                Inicio
               </Link>
-            )}
-            <a className="nav-link disabled">Deshabilitado</a>
-          </div>
-          {isAuthenticated && (
-            <div className="ml-auto d-flex align-items-center"> {/* Content for all devices */}
-              <img
-                className="profile-img rounded-circle"
-                src={user?.picture}
-                alt={user?.name}
-                style={{ width: '40px', height: '40px', marginRight: '8px' }}
-              />
-              <div style={{ lineHeight: '6%' }}>
-                <h5 className="text-dark">{user?.name}</h5>
-                <p className="text-dark">{user?.email}</p>
-              </div>
-              <Logout />
+              {isAuthenticated && (
+                <Link to="/favorites" className="nav-link">
+                  Favoritos
+                </Link>
+              )}
+              {isAuthenticated ? (
+                <div className="ml-lg-auto d-flex align-items-center"> {/* User info on navbar for large devices */}
+                  <img
+                    className="profile-img rounded-circle"
+                    src={user?.picture}
+                    alt={user?.name}
+                    style={{ width: '40px', height: '40px', marginRight: '8px' }}
+                  />
+                  <div style={{ lineHeight: '6%' }}>
+                    <h5 className="text-dark">{user?.name}</h5>
+                    <p className="text-dark">{user?.email}</p>
+                  </div>
+                  <Logout />
+                </div>
+              ) : (
+                <Login />
+              )}
             </div>
-          )}
+          </div>
         </div>
         <button
           className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
