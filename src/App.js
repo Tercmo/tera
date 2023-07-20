@@ -19,35 +19,33 @@ function App() {
 
   return (
     <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <div className="container-fluid">
-          <Link to='/home' className="navbar-brand">Navbar</Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              <Link to='/home' className="nav-link active" aria-current="page">Inicio</Link>
-              {isAuthenticated && <Link to='/favorites' className="nav-link">Favoritos</Link>}
-              <a className="nav-link disabled">Deshabilitado</a>
-            </div>
+      <nav className="navbar navbar-expand-lg navbar-light bg-light container-fluid">
+        <Link to='/home' className="navbar-brand">Proyecto Tera</Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav">
+            <Link to='/home' className="nav-link active" aria-current="page">Inicio</Link>
+            {isAuthenticated && <Link to='/favorites' className="nav-link">Favoritos</Link>}
+            <a className="nav-link disabled">Deshabilitado</a>
           </div>
-          {isAuthenticated ? <Logout /> : <Login />}
-          <button
-            className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
-            onClick={toggleDarkMode}
-          >
-            {isDarkMode ? 'Modo Oscuro' : 'Modo Claro'}
-          </button>
         </div>
+        {isAuthenticated ? <Logout /> : <Login />}
+        <button
+          className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
+          onClick={toggleDarkMode}
+        >
+          {isDarkMode ? 'Modo Oscuro' : 'Modo Claro'}
+        </button>
       </nav>
 
       <main>

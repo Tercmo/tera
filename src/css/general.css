@@ -1,3 +1,4 @@
+/* general.css */
 /* modo oscuro 1 revisar por que solo funciona así */
 .dark-mode {
   background-color: #333;
@@ -12,7 +13,7 @@
 
 /* General a toda la página */
 body {
-  margin: 8px; /* Agregamos un margen mínimo en todos los lados del cuerpo del documento */
+  margin: 0;
   padding: 0;
   background-color: #f8f8f8; /* Estilo de fondo predeterminado */
 }
@@ -25,20 +26,36 @@ body.dark-mode {
 
 /* Contenedor principal del contenido */
 .App {
-  margin: 16px; /* Agregamos un margen mínimo al contenedor principal */
+  margin: 0;
 }
 
 /* Barra de navegación */
 nav {
-  margin-bottom: 16px; /* Agregamos un margen inferior a la barra de navegación */
+  margin-bottom: 0;
 }
 
 /* Barra lateral (si existe) */
 .sidebar {
-  margin-right: 16px; /* Agregamos un margen derecho a la barra lateral */
+  margin-right: 16px;
 }
 
 /* Contenido principal */
 main {
-  margin-right: 16px; /* Agregamos un margen derecho al contenido principal */
+  margin-right: 16px;
+}
+
+/* Estilo para la barra de navegación */
+nav.navbar {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para los elementos internos de la barra de navegación */
+.navbar-nav {
+  margin: 8px; /* Agregamos un margen mínimo a los elementos internos */
+}
+
+/* Opcionalmente, si deseas que el botón hamburguesa ocupe todo el ancho en dispositivos pequeños */
+.navbar-toggler {
+  margin-right: 0;
 }
