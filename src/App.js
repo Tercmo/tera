@@ -38,31 +38,33 @@ function App() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
+          <div className="navbar-nav"> {/* Content for all devices */}
             <Link to="/home" className="nav-link active" aria-current="page">
               Inicio
             </Link>
-            {isAuthenticated && <Link to="/favorites" className="nav-link">Favoritos</Link>}
+            {isAuthenticated && (
+              <Link to="/favorites" className="nav-link">
+                Favoritos
+              </Link>
+            )}
             <a className="nav-link disabled">Deshabilitado</a>
           </div>
-        </div>
-        <div className={`user-info ml-auto d-flex align-items-center`}>
           {isAuthenticated && (
-            <React.Fragment>
+            <div className="ml-auto d-flex align-items-center"> {/* Content for all devices */}
               <img
-                className='profile-img rounded-circle'
+                className="profile-img rounded-circle"
                 src={user?.picture}
                 alt={user?.name}
-                style={{ width: '40px', height: '40px', marginRight: '8px' }} // Ajustar el tamaño de la imagen y el margen aquí
+                style={{ width: '40px', height: '40px', marginRight: '8px' }}
               />
-              <div className="ml-2" style={{ lineHeight: '6%' }}>
+              <div style={{ lineHeight: '6%' }}>
                 <h5 className="text-dark">{user?.name}</h5>
                 <p className="text-dark">{user?.email}</p>
               </div>
-            </React.Fragment>
+              <Logout />
+            </div>
           )}
         </div>
-        {isAuthenticated ? <Logout /> : <Login />}
         <button
           className={`mode-button ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
           onClick={toggleDarkMode}
