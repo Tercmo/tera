@@ -87,7 +87,7 @@ function App() {
             </button>
           )}
         </div>
-        {isAuthenticated && <Logout />}
+        {isAuthenticated && <Logout className="btn btn-outline-danger" />}
       </nav>
 
       <main>
